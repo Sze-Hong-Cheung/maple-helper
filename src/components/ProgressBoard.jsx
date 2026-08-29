@@ -198,7 +198,6 @@ function CoreRow({ node, selected, showPopover, onSelect, onChange }) {
               src={node.icon}
               alt=""
               className="size-full"
-              style={{ imageRendering: 'pixelated' }}
             />
           ) : (
             <span className="flex size-full items-center justify-center px-0.5 text-center text-[8px] leading-3 text-white/70">

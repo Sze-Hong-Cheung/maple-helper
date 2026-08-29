@@ -3,7 +3,7 @@ import HexaTracker from '../components/HexaTracker.jsx'
 import SymbolsTracker from '../components/SymbolsTracker.jsx'
 import { useStoredState } from '../hooks/useStoredState.js'
 import { formatPercent } from '../lib/format.js'
-import { ROSTER_STORAGE_KEY } from '../roster/lookup.js'
+import { useRoster } from '../roster/useRoster.js'
 
 const SELECTED_KEY = 'maple-helper:tracker:selected'
 const TABS = [
@@ -11,7 +11,6 @@ const TABS = [
   { id: 'symbols', label: 'Symbol Tracker' },
 ]
 
-const reviveRoster = (stored, fallback) => (Array.isArray(stored) ? stored : fallback)
 const reviveSelected = (stored, fallback) => (typeof stored === 'string' ? stored : fallback)
 
 function CharacterChip({ entry, selected, onSelect }) {
@@ -52,7 +51,7 @@ function CharacterChip({ entry, selected, onSelect }) {
 }
 
 export default function TrackerPage() {
-  const [roster] = useStoredState(ROSTER_STORAGE_KEY, [], reviveRoster)
+  const [roster] = useRoster()
   const [selectedId, setSelectedId] = useStoredState(SELECTED_KEY, '', reviveSelected)
   const [tab, setTab] = useState('hexa')
 

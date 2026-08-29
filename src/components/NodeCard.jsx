@@ -92,7 +92,6 @@ export default function NodeCard({ node, onChange, variant = 'card' }) {
               src={node.icon}
               alt=""
               className="size-8 shrink-0 rounded-md border border-white/10 bg-slate-950"
-              style={{ imageRendering: 'pixelated' }}
             />
           ) : null}
           <div className="min-w-0 flex-1">

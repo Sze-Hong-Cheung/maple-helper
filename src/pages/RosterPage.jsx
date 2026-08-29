@@ -1,11 +1,7 @@
 import { useState } from 'react'
-import { useStoredState } from '../hooks/useStoredState.js'
 import { formatPercent } from '../lib/format.js'
-import { ROSTER_REGIONS, ROSTER_STORAGE_KEY, lookupGmsCharacter, rosterId } from '../roster/lookup.js'
-
-const STORAGE_KEY = ROSTER_STORAGE_KEY
-
-const reviveRoster = (stored, fallback) => (Array.isArray(stored) ? stored : fallback)
+import { ROSTER_REGIONS, lookupGmsCharacter, rosterId } from '../roster/lookup.js'
+import { useRoster } from '../roster/useRoster.js'
 
 function Avatar({ name, src }) {
   const [failed, setFailed] = useState(false)
@@ -30,7 +26,7 @@ function Avatar({ name, src }) {
 }
 
 export default function RosterPage() {
-  const [roster, setRoster] = useStoredState(STORAGE_KEY, [], reviveRoster)
+  const [roster, setRoster] = useRoster()
   const [region, setRegion] = useState('na')
   const [name, setName] = useState('')
   const [loading, setLoading] = useState(false)
@@ -63,8 +59,9 @@ export default function RosterPage() {
       <header className="mb-6">
         <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Roster</h1>
         <p className="mt-2 max-w-xl text-sm leading-6 text-slate-400">
-          Look up a GMS character on the public rankings and keep their avatar, class, level, and
-          EXP progress in this browser.
+          Look up a GMS character on the public rankings. The list is saved in this browser and
+          in a local roster file while the dev server is running, so you do not have to add
+          everyone again after a refresh.
         </p>
       </header>
 

@@ -26,7 +26,6 @@ function OrderStep({ step, node, current, onSelect }) {
   const icon = stepIcon(step, node)
   const maxed = step.kind !== 'stat' && step.to >= 30
   const clickable = step.kind !== 'stat' && Boolean(node)
-  const pixelated = step.kind !== 'stat'
 
   return (
     <button
@@ -53,7 +52,6 @@ function OrderStep({ step, node, current, onSelect }) {
               src={icon}
               alt=""
               className="size-full object-contain"
-              style={pixelated ? { imageRendering: 'pixelated' } : undefined}
             />
           ) : (
             <span className="flex size-full items-center justify-center text-[10px] text-slate-500">

@@ -257,7 +257,6 @@ function SkillIcon({ href, grayscale = false, filterId }) {
       width="32"
       height="32"
       filter={grayscale ? `url(#${filterId})` : undefined}
-      style={{ imageRendering: 'pixelated' }}
     />
   )
 }
