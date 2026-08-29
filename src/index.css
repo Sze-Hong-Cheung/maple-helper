@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #070a10;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  min-height: 100svh;
+  margin: 0;
+  text-align: initial;
+  border: 0;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+.hex-node,
+.hex-slot {
+  outline: none;
+  transform-box: view-box;
+  transform-origin: 0 0;
+  transform: translate(var(--hex-x), var(--hex-y)) scale(var(--hex-scale, 1));
+}
+
+.hex-node {
+  cursor: pointer;
+  transition: transform 180ms ease-out;
+}
+
+.hex-node:hover {
+  --hex-scale: 1.04;
+}
+
+.hex-node[data-selected='true'] {
+  --hex-scale: 1.06;
+}
+
+.hex-node[data-selected='true']:hover {
+  --hex-scale: 1.08;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hex-node {
+    transition: none;
+  }
+}
